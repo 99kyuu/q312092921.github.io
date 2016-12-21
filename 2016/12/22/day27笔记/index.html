@@ -85,7 +85,7 @@
 
 
 <meta name="description" content="day27授课目录：
-###27.01_反射(类的加载概述和加载时机)
+###27.01_反射(类的加载概述和加载时机)###
 
 A:类的加载概述
 
@@ -97,13 +97,13 @@ A:类的加载概述
 连接
 
 验证 是否有正确的内部结构，并和其他类协调一致
-准备 负责为类的">
+准备 负责">
 <meta property="og:type" content="article">
-<meta property="og:title" content="day27笔记">
+<meta property="og:title" content="Day27笔记">
 <meta property="og:url" content="http://www.inlife.xyz/2016/12/22/day27笔记/index.html">
 <meta property="og:site_name" content="In Life">
 <meta property="og:description" content="day27授课目录：
-###27.01_反射(类的加载概述和加载时机)
+###27.01_反射(类的加载概述和加载时机)###
 
 A:类的加载概述
 
@@ -115,12 +115,12 @@ A:类的加载概述
 连接
 
 验证 是否有正确的内部结构，并和其他类协调一致
-准备 负责为类的">
+准备 负责">
 <meta property="og:updated_time" content="2016-12-21T16:50:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="day27笔记">
+<meta name="twitter:title" content="Day27笔记">
 <meta name="twitter:description" content="day27授课目录：
-###27.01_反射(类的加载概述和加载时机)
+###27.01_反射(类的加载概述和加载时机)###
 
 A:类的加载概述
 
@@ -132,7 +132,7 @@ A:类的加载概述
 连接
 
 验证 是否有正确的内部结构，并和其他类协调一致
-准备 负责为类的">
+准备 负责">
 
 
 
@@ -150,7 +150,7 @@ A:类的加载概述
   };
 </script>
 
-  <title> day27笔记 | In Life </title>
+  <title> Day27笔记 | In Life </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -270,7 +270,7 @@ A:类的加载概述
             
             
               
-                day27笔记
+                Day27笔记
               
             
           </h1>
@@ -330,7 +330,7 @@ A:类的加载概述
 
       
         <p>day27授课目录：</p>
-<p>###27.01_反射(类的加载概述和加载时机)</p>
+<p>###27.01_反射(类的加载概述和加载时机)###</p>
 <ul>
 <li><p>A:类的加载概述</p>
 <ul>
@@ -360,7 +360,7 @@ A:类的加载概述
 </ul>
 </li>
 </ul>
-<p>###27.02_反射(类加载器的概述和分类)</p>
+<p>###27.02_反射(类加载器的概述和分类)###</p>
 <ul>
 <li>A:类加载器的概述<ul>
 <li>负责将.class文件加载到内存中，并为之生成对应的Class对象。虽然我们不需要关心类加载机制，但是了解这个机制我们就能更好的理解程序的运行。</li>
@@ -390,7 +390,7 @@ A:类的加载概述
 </ul>
 </li>
 </ul>
-<p>###27.03_反射(反射概述)</p>
+<p>###27.03_反射(反射概述)###</p>
 <ul>
 <li><p>A:反射概述</p>
 <ul>
@@ -413,7 +413,7 @@ A:类的加载概述
 </ul>
 </li>
 </ul>
-<p>###27.04_反射(Class.forName()读取配置文件举例)</p>
+<p>###27.04_反射(Class.forName()读取配置文件举例)###</p>
 <ul>
 <li>榨汁机(Juicer)榨汁的案例</li>
 <li><p>分别有水果(Fruit)苹果(Apple)香蕉(Banana)桔子(Orange)榨汁(squeeze)</p>
@@ -458,42 +458,42 @@ class Juicer {
     }
 
 }
-</code></pre><p>###27.05_反射(通过反射获取带参构造方法并使用)</p>
+</code></pre><p>###27.05_反射(通过反射获取带参构造方法并使用)###</p>
 </li>
 <li>Constructor<ul>
 <li>Class类的newInstance()方法是使用该类无参的构造函数创建对象, 如果一个类没有无参的构造函数, 就不能这样创建了,可以调用Class类的getConstructor(String.class,int.class)方法获取一个指定的构造函数然后再调用Constructor类的newInstance(“张三”,20)方法创建对象</li>
 </ul>
 </li>
 </ul>
-<p>###27.06_反射(通过反射获取成员变量并使用)</p>
+<p>###27.06_反射(通过反射获取成员变量并使用)###</p>
 <ul>
 <li>Field<ul>
 <li>Class.getField(String)方法可以获取类中的指定字段(可见的), 如果是私有的可以用getDeclaedField(“name”)方法获取,通过set(obj, “李四”)方法可以设置指定对象上该字段的值, 如果是私有的需要先调用setAccessible(true)设置访问权限,用获取的指定的字段调用get(obj)可以获取指定对象中该字段的值</li>
 </ul>
 </li>
 </ul>
-<p>###27.07_反射(通过反射获取方法并使用)</p>
+<p>###27.07_反射(通过反射获取方法并使用)###</p>
 <ul>
 <li>Method<ul>
 <li>Class.getMethod(String, Class…) 和 Class.getDeclaredMethod(String, Class…)方法可以获取类中的指定方法,调用invoke(Object, Object…)可以调用该方法,Class.getMethod(“eat”) invoke(obj) Class.getMethod(“eat”,int.class) invoke(obj,10)</li>
 </ul>
 </li>
 </ul>
-<p>###27.08_反射(通过反射越过泛型检查)</p>
+<p>###27.08_反射(通过反射越过泛型检查)###</p>
 <ul>
 <li>A:案例演示<ul>
 <li>ArrayList<integer>的一个对象，在这个集合中添加一个字符串数据，如何实现呢？</integer></li>
 </ul>
 </li>
 </ul>
-<p>###27.09_反射(通过反射写一个通用的设置某个对象的某个属性为指定的值)</p>
+<p>###27.09_反射(通过反射写一个通用的设置某个对象的某个属性为指定的值)###</p>
 <ul>
 <li>A:案例演示<ul>
 <li>public void setProperty(Object obj, String propertyName, Object value){}，此方法可将obj对象中名为propertyName的属性的值设置为value。</li>
 </ul>
 </li>
 </ul>
-<p>###27.10_反射(练习)</p>
+<p>###27.10_反射(练习)###</p>
 <ul>
 <li>已知一个类，定义如下： <ul>
 <li>package cn.itcast.heima;</li>
@@ -504,7 +504,7 @@ class Juicer {
 </ul>
 </li>
 </ul>
-<p>###27.11_反射(动态代理的概述和实现)</p>
+<p>###27.11_反射(动态代理的概述和实现)###</p>
 <ul>
 <li><p>A:动态代理概述</p>
 <ul>
@@ -520,7 +520,7 @@ class Juicer {
 </ul>
 </li>
 </ul>
-<p>###27.12_设计模式(模版(Template)设计模式概述和使用)</p>
+<p>###27.12_设计模式(模版(Template)设计模式概述和使用)###</p>
 <ul>
 <li>A:模版设计模式概述<ul>
 <li>模版方法模式就是定义一个算法的骨架，而将具体的算法延迟到子类中来实现</li>
@@ -538,7 +538,7 @@ class Juicer {
 </ul>
 </li>
 </ul>
-<p>###27.13_JDK5新特性(自己实现枚举类)</p>
+<p>###27.13_JDK5新特性(自己实现枚举类)###</p>
 <ul>
 <li>A:枚举概述<ul>
 <li>是指将变量的值一一列出来,变量的值只限于列举出来的值的范围内。举例：一周只有7天，一年只有12个月等。</li>
@@ -553,14 +553,14 @@ class Juicer {
 </ul>
 </li>
 </ul>
-<p>###27.14_JDK5新特性(通过enum实现枚举类)</p>
+<p>###27.14_JDK5新特性(通过enum实现枚举类)###</p>
 <ul>
 <li>A:案例演示<ul>
 <li>通过enum实现枚举类</li>
 </ul>
 </li>
 </ul>
-<p>###27.15_JDK5新特性(枚举的注意事项)</p>
+<p>###27.15_JDK5新特性(枚举的注意事项)###</p>
 <ul>
 <li>A:案例演示<ul>
 <li>定义枚举类要用关键字enum</li>
@@ -572,7 +572,7 @@ class Juicer {
 </ul>
 </li>
 </ul>
-<p>###27.16_JDK5新特性(枚举类的常见方法)</p>
+<p>###27.16_JDK5新特性(枚举类的常见方法)###</p>
 <ul>
 <li>A:枚举类的常见方法<ul>
 <li>int ordinal()</li>
@@ -589,7 +589,7 @@ class Juicer {
 </ul>
 </li>
 </ul>
-<p>###27.17_JDK7新特性(JDK7的六个新特性回顾和讲解)</p>
+<p>###27.17_JDK7新特性(JDK7的六个新特性回顾和讲解)###</p>
 <ul>
 <li>A:二进制字面量</li>
 <li>B:数字字面量可以出现下划线</li>
@@ -598,7 +598,7 @@ class Juicer {
 <li>E:异常的多个catch合并,每个异常用或|</li>
 <li>F:try-with-resources 语句</li>
 </ul>
-<p>###27.18_JDK8新特性(JDK8的新特性)</p>
+<p>###27.18_JDK8新特性(JDK8的新特性)###</p>
 <ul>
 <li>接口中可以定义有方法体的方法,如果是非静态,必须用default修饰    </li>
 <li><p>如果是静态的就不用了</p>
@@ -619,7 +619,7 @@ class Juicer {
 
 局部内部类在访问他所在方法中的局部变量必须用final修饰,为什么?
 因为当调用这个方法时,局部变量如果没有用final修饰,他的生命周期和方法的生命周期是一样的,当方法弹栈,这个局部变量也会消失,那么如果局部内部类对象还没有马上消失想用这个局部变量,就没有了,如果用final修饰会在类加载的时候进入常量池,即使方法弹栈,常量池的常量还在,也可以继续使用
-</code></pre><p>###27.19_day27总结</p>
+</code></pre><p>###27.19_day27总结###</p>
 </li>
 <li>把今天的知识点总结一遍。</li>
 </ul>
