@@ -233,6 +233,469 @@
             
               
                 
+                <a class="post-title-link" href="/2016/12/21/day17笔记/" itemprop="url">
+                  day17笔记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-21T18:59:15+08:00" content="2016-12-21">
+              2016-12-21
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>###17.01_集合框架(HashSet存储字符串并遍历)</p>
+<ul>
+<li>A:Set集合概述及特点<ul>
+<li>通过API查看即可</li>
+</ul>
+</li>
+<li><p>B:案例演示</p>
+<ul>
+<li>HashSet存储字符串并遍历</li>
+<li><pre><code> HashSet&lt;String&gt; hs = new HashSet&lt;&gt;();
+boolean b1 = hs.add(&quot;a&quot;);
+boolean b2 = hs.add(&quot;a&quot;);            //当存储不成功的时候,返回false
+
+System.out.println(b1);
+System.out.println(b2);
+for(String s : hs) {
+    System.out.println(s);
+}
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<p>###17.02_集合框架(HashSet存储自定义对象保证元素唯一性)</p>
+<ul>
+<li><p>A:案例演示</p>
+<ul>
+<li><p>存储自定义对象，并保证元素唯一性。</p>
+<pre><code>HashSet&lt;Person&gt; hs = new HashSet&lt;&gt;();
+hs.add(new Person(&quot;张三&quot;, 23));
+hs.add(new Person(&quot;张三&quot;, 23));
+hs.add(new Person(&quot;李四&quot;, 23));
+hs.add(new Person(&quot;李四&quot;, 23));
+hs.add(new Person(&quot;王五&quot;, 23));
+hs.add(new Person(&quot;赵六&quot;, 23));
+</code></pre></li>
+</ul>
+</li>
+<li>重写hashCode()和equals()方法<br>###17.03_集合框架(HashSet存储自定义对象保证元素唯一性图解及代码优化)</li>
+<li>A:画图演示<ul>
+<li>画图说明比较过程</li>
+</ul>
+</li>
+<li>B:代码优化<ul>
+<li>为了减少比较，优化hashCode()代码写法。</li>
+<li>最终版就是自动生成即可。</li>
+</ul>
+</li>
+</ul>
+<p>###17.04_集合框架(HashSet如何保证元素唯一性的原理)</p>
+<ul>
+<li>1.HashSet原理<ul>
+<li>我们使用Set集合都是需要去掉重复元素的, 如果在存储的时候逐个equals()比较, 效率较低,哈希算法提高了去重复的效率, 降低了使用equals()方法的次数</li>
+<li>当HashSet调用add()方法存储对象的时候, 先调用对象的hashCode()方法得到一个哈希值, 然后在集合中查找是否有哈希值相同的对象<ul>
+<li>如果没有哈希值相同的对象就直接存入集合</li>
+<li>如果有哈希值相同的对象, 就和哈希值相同的对象逐个进行equals()比较,比较结果为false就存入, true则不存</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>2.将自定义类的对象存入HashSet去重复<ul>
+<li>类中必须重写hashCode()和equals()方法</li>
+<li>hashCode(): 属性相同的对象返回值必须相同, 属性不同的返回值尽量不同(提高效率)</li>
+<li>equals(): 属性相同返回true, 属性不同返回false,返回false的时候存储</li>
+</ul>
+</li>
+</ul>
+<p>###17.05_集合框架(LinkedHashSet的概述和使用)</p>
+<ul>
+<li>A:LinkedHashSet的特点</li>
+<li>B:案例演示<ul>
+<li>LinkedHashSet的特点<ul>
+<li>可以保证怎么存就怎么取 </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>###17.06_集合框架(产生10个1-20之间的随机数要求随机数不能重复)</p>
+<ul>
+<li><p>A:案例演示</p>
+<ul>
+<li>需求：编写一个程序，获取10个1至20的随机数，要求随机数不能重复。并把最终的随机数输出到控制台。</li>
+<li><pre><code>HashSet&lt;Integer&gt; hs = new HashSet&lt;&gt;();        //创建集合对象
+Random r = new Random();                    //创建随机数对象
+
+while(hs.size() &lt; 10) {
+    int num = r.nextInt(20) + 1;            //生成1到20的随机数
+    hs.add(num);
+}
+
+for (Integer integer : hs) {                //遍历集合
+    System.out.println(integer);            //打印每一个元素
+}
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<p>###17.07_集合框架(练习)</p>
+<ul>
+<li><p>使用Scanner从键盘读取一行输入,去掉其中重复字符, 打印出不同的那些字符</p>
+<ul>
+<li><p>aaaabbbcccddd</p>
+<pre><code>Scanner sc = new Scanner(System.in);            //创建键盘录入对象
+System.out.println(&quot;请输入一行字符串:&quot;);
+String line = sc.nextLine();                    //将键盘录入的字符串存储在line中
+char[] arr = line.toCharArray();                //将字符串转换成字符数组
+HashSet&lt;Character&gt; hs = new HashSet&lt;&gt;();        //创建HashSet集合对象
+
+for(char c : arr) {                                //遍历字符数组
+    hs.add(c);                                    //将字符数组中的字符添加到集合中
+}
+
+for (Character ch : hs) {                        //遍历集合
+    System.out.println(ch);
+}
+</code></pre><p>###17.08_集合框架(练习)</p>
+</li>
+</ul>
+</li>
+<li>将集合中的重复元素去掉</li>
+<li><pre><code>public static void main(String[] args) {
+    ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;();
+    list.add(&quot;a&quot;);
+    list.add(&quot;a&quot;);
+    list.add(&quot;a&quot;);
+    list.add(&quot;b&quot;);
+    list.add(&quot;b&quot;);
+    list.add(&quot;b&quot;);
+    list.add(&quot;b&quot;);
+    list.add(&quot;c&quot;);
+    list.add(&quot;c&quot;);
+    list.add(&quot;c&quot;);
+    list.add(&quot;c&quot;);
+
+    System.out.println(list);
+    System.out.println(&quot;去除重复后:&quot;);
+    getSingle(list);
+    System.out.println(list);
+}
+
+/*
+ * 将集合中的重复元素去掉
+ * 1,void
+ * 2,List&lt;String&gt; list
+ */
+
+public static void getSingle(List&lt;String&gt; list) {
+    LinkedHashSet&lt;String&gt; lhs = new LinkedHashSet&lt;&gt;();
+    lhs.addAll(list);                                    //将list集合中的所有元素添加到lhs
+    list.clear();                                        //清空原集合
+    list.addAll(lhs);                                    //将去除重复的元素添回到list中
+}
+</code></pre></li>
+</ul>
+<p>###17.09_集合框架(TreeSet存储Integer类型的元素并遍历)</p>
+<ul>
+<li>A:案例演示<ul>
+<li>TreeSet存储Integer类型的元素并遍历</li>
+</ul>
+</li>
+</ul>
+<p>###17.10_集合框架(TreeSet存储自定义对象)</p>
+<ul>
+<li>A:案例演示<ul>
+<li>存储Person对象</li>
+</ul>
+</li>
+</ul>
+<p>###17.11_集合框架(TreeSet保证元素唯一和自然排序的原理和图解)</p>
+<ul>
+<li>A:画图演示<ul>
+<li>TreeSet保证元素唯一和自然排序的原理和图解</li>
+</ul>
+</li>
+</ul>
+<p>###17.12_集合框架(TreeSet存储自定义对象并遍历练习1)</p>
+<ul>
+<li>A:案例演示<ul>
+<li>TreeSet存储自定义对象并遍历练习1(按照姓名排序)</li>
+</ul>
+</li>
+</ul>
+<p>###17.13_集合框架(TreeSet存储自定义对象并遍历练习2)</p>
+<ul>
+<li>A:案例演示<ul>
+<li>TreeSet存储自定义对象并遍历练习2(按照姓名的长度排序)</li>
+</ul>
+</li>
+</ul>
+<p>###17.14_集合框架(TreeSet保证元素唯一和比较器排序的原理及代码实现)</p>
+<ul>
+<li>A:案例演示<ul>
+<li>TreeSet保证元素唯一和比较器排序的原理及代码实现</li>
+</ul>
+</li>
+</ul>
+<p>###17.15_集合框架(TreeSet原理)</p>
+<ul>
+<li>1.特点<ul>
+<li>TreeSet是用来排序的, 可以指定一个顺序, 对象存入之后会按照指定的顺序排列</li>
+</ul>
+</li>
+<li>2.使用方式<ul>
+<li>a.自然顺序(Comparable)<ul>
+<li>TreeSet类的add()方法中会把存入的对象提升为Comparable类型</li>
+<li>调用对象的compareTo()方法和集合中的对象比较</li>
+<li>根据compareTo()方法返回的结果进行存储</li>
+</ul>
+</li>
+<li>b.比较器顺序(Comparator)<ul>
+<li>创建TreeSet的时候可以制定 一个Comparator</li>
+<li>如果传入了Comparator的子类对象, 那么TreeSet就会按照比较器中的顺序排序</li>
+<li>add()方法内部会自动调用Comparator接口中compare()方法排序</li>
+<li>调用的对象是compare方法的第一个参数,集合中的对象是compare方法的第二个参数</li>
+</ul>
+</li>
+<li>c.两种方式的区别<ul>
+<li>TreeSet构造函数什么都不传, 默认按照类中Comparable的顺序(没有就报错ClassCastException)</li>
+<li>TreeSet如果传入Comparator, 就优先按照Comparator</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>###17.16_集合框架(练习)</p>
+<ul>
+<li><p>在一个集合中存储了无序并且重复的字符串,定义一个方法,让其有序(字典顺序),而且还不能去除重复</p>
+<pre><code>public static void main(String[] args) {
+    ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;();
+    list.add(&quot;ccc&quot;);
+    list.add(&quot;ccc&quot;);
+    list.add(&quot;aaa&quot;);
+    list.add(&quot;aaa&quot;);
+    list.add(&quot;bbb&quot;);
+    list.add(&quot;ddd&quot;);
+    list.add(&quot;ddd&quot;);
+
+    sort(list);
+    System.out.println(list);
+}
+
+/*
+ * 对集合中的元素排序,并保留重复
+ * 1,void
+ * 2,List&lt;String&gt; list
+ */
+public static void sort(List&lt;String&gt; list) {
+    TreeSet&lt;String&gt; ts = new TreeSet&lt;&gt;(new Comparator&lt;String&gt;() {        //定义比较器(new Comparator(){}是Comparator的子类对象)
+
+        @Override
+        public int compare(String s1, String s2) {                        //重写compare方法
+            int num = s1.compareTo(s2);                                    //比较内容
+            return num == 0 ? 1 : num;                                    //如果内容一样返回一个不为0的数字即可
+        }
+    });
+
+    ts.addAll(list);                                                    //将list集合中的所有元素添加到ts中
+    list.clear();                                                        //清空list
+    list.addAll(ts);                                                    //将ts中排序并保留重复的结果在添加到list中
+}
+</code></pre></li>
+</ul>
+<p>###17.17_集合框架(练习)</p>
+<ul>
+<li><p>从键盘接收一个字符串, 程序对其中所有字符进行排序,例如键盘输入: helloitcast程序打印:acehillostt</p>
+<pre><code>Scanner sc = new Scanner(System.in);            //创建键盘录入对象
+System.out.println(&quot;请输入一行字符串:&quot;);
+String line = sc.nextLine();                    //将键盘录入的字符串存储在line中
+char[] arr = line.toCharArray();                //将字符串转换成字符数组
+TreeSet&lt;Character&gt; ts = new TreeSet&lt;&gt;(new Comparator&lt;Character&gt;() {
+
+    @Override
+    public int compare(Character c1, Character c2) {
+        //int num = c1.compareTo(c2);
+        int num = c1 - c2;                    //自动拆箱
+        return num == 0 ? 1 : num;
+    }
+});
+
+for(char c : arr) {
+    ts.add(c);
+}
+
+for(Character ch : ts) {
+    System.out.print(ch);
+}
+</code></pre><p>###17.18_集合框架(练习)</p>
+</li>
+<li><p>程序启动后, 可以从键盘输入接收多个整数, 直到输入quit时结束输入. 把所有输入的整数倒序排列打印.</p>
+<pre><code>Scanner sc = new Scanner(System.in);        //创建键盘录入对象
+System.out.println(&quot;请输入:&quot;);
+TreeSet&lt;Integer&gt; ts = new TreeSet&lt;&gt;(new Comparator&lt;Integer&gt;() {//将比较器传给TreeSet的构造方法
+
+    @Override
+    public int compare(Integer i1, Integer i2) {
+        //int num = i2 - i1;                    //自动拆箱
+        int num = i2.compareTo(i1);
+        return num == 0 ? 1 : num;
+    }
+});
+
+while(true) {
+    String line = sc.nextLine();            //将键盘录入的字符串存储在line中
+    if(&quot;quit&quot;.equals(line))                    //如果字符串常量和变量比较,常量放前面,这样不会出现空指针异常,变量里面可能存储null
+        break;
+    try {
+        int num = Integer.parseInt(line);        //将数字字符串转换成数字
+        ts.add(num);
+    } catch (Exception e) {
+        System.out.println(&quot;您录入的数据有误,请输入一个整数&quot;);
+    }
+
+}
+
+for (Integer i : ts) {                        //遍历TreeSet集合
+    System.out.println(i);
+}
+</code></pre><p>###17.19_集合框架(键盘录入学生信息按照总分排序后输出在控制台)</p>
+</li>
+<li><p>A:案例演示</p>
+<ul>
+<li><p>需求：键盘录入5个学生信息(姓名,语文成绩,数学成绩,英语成绩),按照总分从高到低输出到控制台。</p>
+<pre><code>Scanner sc = new Scanner(System.in);
+System.out.println(&quot;请输入5个学生成绩格式是:(姓名,语文成绩,数学成绩,英语成绩)&quot;);
+TreeSet&lt;Student&gt; ts = new TreeSet&lt;&gt;(new Comparator&lt;Student&gt;() {
+    @Override
+    public int compare(Student s1, Student s2) {
+        int num = s2.getSum() - s1.getSum();            //根据学生的总成绩降序排列
+        return num == 0 ? 1 : num;
+    }
+});
+
+while(ts.size() &lt; 5) {
+    String line = sc.nextLine();
+    try {
+        String[] arr = line.split(&quot;,&quot;);
+        int chinese = Integer.parseInt(arr[1]);                //转换语文成绩
+        int math = Integer.parseInt(arr[2]);                //转换数学成绩
+        int english = Integer.parseInt(arr[3]);                //转换英语成绩
+        ts.add(new Student(arr[0], chinese, math, english));
+    } catch (Exception e) {
+        System.out.println(&quot;录入格式有误,输入5个学生成绩格式是:(姓名,语文成绩,数学成绩,英语成绩&quot;);
+    }
+
+}
+
+System.out.println(&quot;排序后的学生成绩是:&quot;);
+for (Student s : ts) {
+    System.out.println(s);
+}
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<p>###17.20_day17总结</p>
+<ul>
+<li>1.List<ul>
+<li>a.普通for循环, 使用get()逐个获取</li>
+<li>b.调用iterator()方法得到Iterator, 使用hasNext()和next()方法</li>
+<li>c.增强for循环, 只要可以使用Iterator的类都可以用</li>
+<li>d.Vector集合可以使用Enumeration的hasMoreElements()和nextElement()方法</li>
+</ul>
+</li>
+<li>2.Set<ul>
+<li>a.调用iterator()方法得到Iterator, 使用hasNext()和next()方法</li>
+<li>b.增强for循环, 只要可以使用Iterator的类都可以用</li>
+</ul>
+</li>
+<li>3.普通for循环,迭代器,增强for循环是否可以在遍历的过程中删除 </li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/12/21/day16笔记/" itemprop="url">
                   day16笔记
                 </a>
@@ -565,393 +1028,6 @@ for(String s : list) {
 </ul>
 <p>###16.20_day16总结</p>
 <ul>
-<li>把今天的知识点总结一遍。</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/21/day27笔记/" itemprop="url">
-                  day27笔记
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-21T18:59:15+08:00" content="2016-12-21">
-              2016-12-21
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>day27授课目录：</p>
-<p>###27.01_反射(类的加载概述和加载时机)</p>
-<ul>
-<li><p>A:类的加载概述</p>
-<ul>
-<li>当程序要使用某个类时，如果该类还未被加载到内存中，则系统会通过加载，连接，初始化三步来实现对这个类进行初始化。</li>
-<li>加载 <ul>
-<li>就是指将class文件读入内存，并为之创建一个Class对象。任何类被使用时系统都会建立一个Class对象。</li>
-</ul>
-</li>
-<li><p>连接</p>
-<ul>
-<li>验证 是否有正确的内部结构，并和其他类协调一致</li>
-<li>准备 负责为类的静态成员分配内存，并设置默认初始化值</li>
-<li>解析 将类的二进制数据中的符号引用替换为直接引用</li>
-</ul>
-</li>
-<li><p>初始化 就是我们以前讲过的初始化步骤</p>
-</li>
-</ul>
-</li>
-<li>B:加载时机<ul>
-<li>创建类的实例</li>
-<li>访问类的静态变量，或者为静态变量赋值</li>
-<li>调用类的静态方法</li>
-<li>使用反射方式来强制创建某个类或接口对应的java.lang.Class对象</li>
-<li>初始化某个类的子类</li>
-<li>直接使用java.exe命令来运行某个主类</li>
-</ul>
-</li>
-</ul>
-<p>###27.02_反射(类加载器的概述和分类)</p>
-<ul>
-<li>A:类加载器的概述<ul>
-<li>负责将.class文件加载到内存中，并为之生成对应的Class对象。虽然我们不需要关心类加载机制，但是了解这个机制我们就能更好的理解程序的运行。</li>
-</ul>
-</li>
-<li>B:类加载器的分类<ul>
-<li>Bootstrap ClassLoader 根类加载器</li>
-<li>Extension ClassLoader 扩展类加载器</li>
-<li>Sysetm ClassLoader 系统类加载器</li>
-</ul>
-</li>
-<li>C:类加载器的作用<ul>
-<li>Bootstrap ClassLoader 根类加载器<ul>
-<li>也被称为引导类加载器，负责Java核心类的加载</li>
-<li>比如System,String等。在JDK中JRE的lib目录下rt.jar文件中</li>
-</ul>
-</li>
-<li>Extension ClassLoader 扩展类加载器<ul>
-<li>负责JRE的扩展目录中jar包的加载。</li>
-<li>在JDK中JRE的lib目录下ext目录</li>
-</ul>
-</li>
-<li>Sysetm ClassLoader 系统类加载器<ul>
-<li>负责在JVM启动时加载来自java命令的class文件，以及classpath环境变量所指定的jar包和类路径</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>###27.03_反射(反射概述)</p>
-<ul>
-<li><p>A:反射概述</p>
-<ul>
-<li>JAVA反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；</li>
-<li>对于任意一个对象，都能够调用它的任意一个方法和属性；</li>
-<li>这种动态获取的信息以及动态调用对象的方法的功能称为java语言的反射机制。</li>
-<li>要想解剖一个类,必须先要获取到该类的字节码文件对象。</li>
-<li>而解剖使用的就是Class类中的方法，所以先要获取到每一个字节码文件对应的Class类型的对象。</li>
-</ul>
-</li>
-<li><p>B:三种方式</p>
-<ul>
-<li>a:Object类的getClass()方法,判断两个对象是否是同一个字节码文件</li>
-<li>b:静态属性class,锁对象</li>
-<li>c:Class类中静态方法forName(),读取配置文件</li>
-</ul>
-</li>
-<li>C:案例演示<ul>
-<li>获取class文件对象的三种方式</li>
-</ul>
-</li>
-</ul>
-<p>###27.04_反射(Class.forName()读取配置文件举例)</p>
-<ul>
-<li>榨汁机(Juicer)榨汁的案例</li>
-<li><p>分别有水果(Fruit)苹果(Apple)香蕉(Banana)桔子(Orange)榨汁(squeeze)</p>
-<pre><code>public class Demo2_Reflect {
-
-    /**
-     * 榨汁机(Juicer)榨汁的案例
-     * 分别有水果(Fruit)苹果(Apple)香蕉(Banana)桔子(Orange)榨汁(squeeze)
-     * @throws Exception 
-     */
-    public static void main(String[] args) throws Exception {
-        /*Juicer j = new Juicer();
-        //j.run(new Apple());
-        j.run(new Orange());*/
-        BufferedReader br = new BufferedReader(new FileReader(&quot;config.properties&quot;));    //创建输入流对象,关联配置文件
-        Class&lt;?&gt; clazz = Class.forName(br.readLine());                                    //读取配置文件一行内容,获取该类的字节码对象
-        Fruit f = (Fruit) clazz.newInstance();                                            //通过字节码对象创建实例对象
-        Juicer j = new Juicer();
-        j.run(f);
-    }
-
-}
-interface Fruit {
-    public void squeeze();
-}
-
-class Apple implements Fruit {
-    public void squeeze() {
-        System.out.println(&quot;榨出一杯苹果汁儿&quot;);
-    }
-}
-
-class Orange implements Fruit {
-    public void squeeze() {
-        System.out.println(&quot;榨出一杯桔子汁儿&quot;);
-    }
-}
-
-class Juicer {
-    public void run(Fruit f) {
-        f.squeeze();
-    }
-
-}
-</code></pre><p>###27.05_反射(通过反射获取带参构造方法并使用)</p>
-</li>
-<li>Constructor<ul>
-<li>Class类的newInstance()方法是使用该类无参的构造函数创建对象, 如果一个类没有无参的构造函数, 就不能这样创建了,可以调用Class类的getConstructor(String.class,int.class)方法获取一个指定的构造函数然后再调用Constructor类的newInstance(“张三”,20)方法创建对象</li>
-</ul>
-</li>
-</ul>
-<p>###27.06_反射(通过反射获取成员变量并使用)</p>
-<ul>
-<li>Field<ul>
-<li>Class.getField(String)方法可以获取类中的指定字段(可见的), 如果是私有的可以用getDeclaedField(“name”)方法获取,通过set(obj, “李四”)方法可以设置指定对象上该字段的值, 如果是私有的需要先调用setAccessible(true)设置访问权限,用获取的指定的字段调用get(obj)可以获取指定对象中该字段的值</li>
-</ul>
-</li>
-</ul>
-<p>###27.07_反射(通过反射获取方法并使用)</p>
-<ul>
-<li>Method<ul>
-<li>Class.getMethod(String, Class…) 和 Class.getDeclaredMethod(String, Class…)方法可以获取类中的指定方法,调用invoke(Object, Object…)可以调用该方法,Class.getMethod(“eat”) invoke(obj) Class.getMethod(“eat”,int.class) invoke(obj,10)</li>
-</ul>
-</li>
-</ul>
-<p>###27.08_反射(通过反射越过泛型检查)</p>
-<ul>
-<li>A:案例演示<ul>
-<li>ArrayList<integer>的一个对象，在这个集合中添加一个字符串数据，如何实现呢？</integer></li>
-</ul>
-</li>
-</ul>
-<p>###27.09_反射(通过反射写一个通用的设置某个对象的某个属性为指定的值)</p>
-<ul>
-<li>A:案例演示<ul>
-<li>public void setProperty(Object obj, String propertyName, Object value){}，此方法可将obj对象中名为propertyName的属性的值设置为value。</li>
-</ul>
-</li>
-</ul>
-<p>###27.10_反射(练习)</p>
-<ul>
-<li>已知一个类，定义如下： <ul>
-<li>package cn.itcast.heima;</li>
-<li>public class DemoClass {<br> public void run() {<pre><code>System.out.println(&quot;welcome to heima!&quot;);
-</code></pre> }<br>}</li>
-<li>(1) 写一个Properties格式的配置文件，配置类的完整名称。 </li>
-<li>(2) 写一个程序，读取这个Properties配置文件，获得类的完整名称并加载这个类，用反射的方式运行run方法。</li>
-</ul>
-</li>
-</ul>
-<p>###27.11_反射(动态代理的概述和实现)</p>
-<ul>
-<li><p>A:动态代理概述</p>
-<ul>
-<li>代理：本来应该自己做的事情，请了别人来做，被请的人就是代理对象。</li>
-<li>举例：春节回家买票让人代买</li>
-<li><p>动态代理：在程序运行过程中产生的这个对象,而程序运行过程中产生对象其实就是我们刚才反射讲解的内容，所以，动态代理其实就是通过反射来生成一个代理</p>
-</li>
-<li><p>在Java中java.lang.reflect包下提供了一个Proxy类和一个InvocationHandler接口，通过使用这个类和接口就可以生成动态代理对象。JDK提供的代理只能针对接口做代理。我们有更强大的代理cglib，Proxy类中的方法创建动态代理类对象</p>
-</li>
-<li>public static Object newProxyInstance(ClassLoader loader,Class&lt;?&gt;[] interfaces,InvocationHandler h)</li>
-<li>最终会调用InvocationHandler的方法</li>
-<li>InvocationHandler Object invoke(Object proxy,Method method,Object[] args)</li>
-</ul>
-</li>
-</ul>
-<p>###27.12_设计模式(模版(Template)设计模式概述和使用)</p>
-<ul>
-<li>A:模版设计模式概述<ul>
-<li>模版方法模式就是定义一个算法的骨架，而将具体的算法延迟到子类中来实现</li>
-</ul>
-</li>
-<li>B:优点和缺点<ul>
-<li>a:优点<ul>
-<li>使用模版方法模式，在定义算法骨架的同时，可以很灵活的实现具体的算法，满足用户灵活多变的需求</li>
-</ul>
-</li>
-<li>b:缺点<ul>
-<li>如果算法骨架有修改的话，则需要修改抽象类<br>1,装饰<br>2,单例<br>3,简单工厂<br>4,工厂方法<br>5,适配器<br>6,模版</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>###27.13_JDK5新特性(自己实现枚举类)</p>
-<ul>
-<li>A:枚举概述<ul>
-<li>是指将变量的值一一列出来,变量的值只限于列举出来的值的范围内。举例：一周只有7天，一年只有12个月等。</li>
-</ul>
-</li>
-<li>B:回想单例设计模式：单例类是一个类只有一个实例<ul>
-<li>那么多例类就是一个类有多个实例，但不是无限个数的实例，而是有限个数的实例。这才能是枚举类。</li>
-</ul>
-</li>
-<li>C:案例演示<ul>
-<li>自己实现枚举类<br>1,自动拆装箱<br>2,泛型<br>3,可变参数<br>4,静态导入<br>5,增强for循环<br>6,互斥锁<br>7,枚举</li>
-</ul>
-</li>
-</ul>
-<p>###27.14_JDK5新特性(通过enum实现枚举类)</p>
-<ul>
-<li>A:案例演示<ul>
-<li>通过enum实现枚举类</li>
-</ul>
-</li>
-</ul>
-<p>###27.15_JDK5新特性(枚举的注意事项)</p>
-<ul>
-<li>A:案例演示<ul>
-<li>定义枚举类要用关键字enum</li>
-<li>所有枚举类都是Enum的子类</li>
-<li>枚举类的第一行上必须是枚举项，最后一个枚举项后的分号是可以省略的，但是如果枚举类有其他的东西，这个分号就不能省略。建议不要省略</li>
-<li>枚举类可以有构造器，但必须是private的，它默认的也是private的。</li>
-<li>枚举类也可以有抽象方法，但是枚举项必须重写该方法</li>
-<li>枚举在switch语句中的使用</li>
-</ul>
-</li>
-</ul>
-<p>###27.16_JDK5新特性(枚举类的常见方法)</p>
-<ul>
-<li>A:枚举类的常见方法<ul>
-<li>int ordinal()</li>
-<li>int compareTo(E o)</li>
-<li>String name()</li>
-<li>String toString()</li>
-<li><t> T valueOf(Class<t> type,String name)</t></t></li>
-<li>values() </li>
-<li>此方法虽然在JDK文档中查找不到，但每个枚举类都具有该方法，它遍历枚举类的所有枚举值非常方便</li>
-</ul>
-</li>
-<li>B:案例演示<ul>
-<li>枚举类的常见方法</li>
-</ul>
-</li>
-</ul>
-<p>###27.17_JDK7新特性(JDK7的六个新特性回顾和讲解)</p>
-<ul>
-<li>A:二进制字面量</li>
-<li>B:数字字面量可以出现下划线</li>
-<li>C:switch 语句可以用字符串</li>
-<li>D:泛型简化,菱形泛型</li>
-<li>E:异常的多个catch合并,每个异常用或|</li>
-<li>F:try-with-resources 语句</li>
-</ul>
-<p>###27.18_JDK8新特性(JDK8的新特性)</p>
-<ul>
-<li>接口中可以定义有方法体的方法,如果是非静态,必须用default修饰    </li>
-<li><p>如果是静态的就不用了</p>
-<pre><code>class Test {
-    public void run() {
-        final int x = 10;
-        class Inner {
-            public void method() {
-                System.out.println(x);
-            }
-        }
-
-        Inner i = new Inner();
-        i.method();
-    }
-
-}
-
-局部内部类在访问他所在方法中的局部变量必须用final修饰,为什么?
-因为当调用这个方法时,局部变量如果没有用final修饰,他的生命周期和方法的生命周期是一样的,当方法弹栈,这个局部变量也会消失,那么如果局部内部类对象还没有马上消失想用这个局部变量,就没有了,如果用final修饰会在类加载的时候进入常量池,即使方法弹栈,常量池的常量还在,也可以继续使用
-</code></pre><p>###27.19_day27总结</p>
-</li>
 <li>把今天的知识点总结一遍。</li>
 </ul>
 
@@ -4371,7 +4447,21 @@ z.show();
           </div>
 
           
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
 
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
           
 
         </nav>
