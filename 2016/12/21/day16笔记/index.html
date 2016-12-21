@@ -1,0 +1,867 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="###16.01_集合框架(去除ArrayList中重复字符串元素方式)(掌握)
+
+A:案例演示
+
+需求：ArrayList去除集合中字符串的重复值(字符串的内容相同)
+思路：创建新集合方式
+/**
+ *  A:案例演示
+ * 需求：ArrayList去除集合中字符串的重复值(字符串的内容相同)
+ * 思路：创建新集合方式
+ */
+public static void main(String[]">
+<meta property="og:type" content="article">
+<meta property="og:title" content="day16笔记">
+<meta property="og:url" content="http://www.inlife.xyz/2016/12/21/day16笔记/index.html">
+<meta property="og:site_name" content="In Life">
+<meta property="og:description" content="###16.01_集合框架(去除ArrayList中重复字符串元素方式)(掌握)
+
+A:案例演示
+
+需求：ArrayList去除集合中字符串的重复值(字符串的内容相同)
+思路：创建新集合方式
+/**
+ *  A:案例演示
+ * 需求：ArrayList去除集合中字符串的重复值(字符串的内容相同)
+ * 思路：创建新集合方式
+ */
+public static void main(String[]">
+<meta property="og:updated_time" content="2016-12-21T10:22:20.668Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="day16笔记">
+<meta name="twitter:description" content="###16.01_集合框架(去除ArrayList中重复字符串元素方式)(掌握)
+
+A:案例演示
+
+需求：ArrayList去除集合中字符串的重复值(字符串的内容相同)
+思路：创建新集合方式
+/**
+ *  A:案例演示
+ * 需求：ArrayList去除集合中字符串的重复值(字符串的内容相同)
+ * 思路：创建新集合方式
+ */
+public static void main(String[]">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> day16笔记 | In Life </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">In Life</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                day16笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-21T18:59:15+08:00" content="2016-12-21">
+              2016-12-21
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>###16.01_集合框架(去除ArrayList中重复字符串元素方式)(掌握)</p>
+<ul>
+<li><p>A:案例演示</p>
+<ul>
+<li>需求：ArrayList去除集合中字符串的重复值(字符串的内容相同)</li>
+<li><p>思路：创建新集合方式</p>
+<pre><code>/**
+ *  A:案例演示
+ * 需求：ArrayList去除集合中字符串的重复值(字符串的内容相同)
+ * 思路：创建新集合方式
+ */
+public static void main(String[] args) {
+    ArrayList list = new ArrayList();
+    list.add(&quot;a&quot;);
+    list.add(&quot;a&quot;);
+    list.add(&quot;b&quot;);
+    list.add(&quot;b&quot;);
+    list.add(&quot;b&quot;);
+    list.add(&quot;c&quot;);
+    list.add(&quot;c&quot;);
+    list.add(&quot;c&quot;);
+    list.add(&quot;c&quot;);
+
+    System.out.println(list);
+    ArrayList newList = getSingle(list);
+    System.out.println(newList);
+}
+
+/*
+ * 去除重复
+ * 1,返回ArrayList
+ * 2,参数列表ArrayList
+ */
+public static ArrayList getSingle(ArrayList list) {
+    ArrayList newList = new ArrayList();            //创建一个新集合
+    Iterator it = list.iterator();                    //获取迭代器
+    while(it.hasNext()) {                            //判断老集合中是否有元素
+        String temp = (String)it.next();            //将每一个元素临时记录住
+        if(!newList.contains(temp)) {                //如果新集合中不包含该元素
+            newList.add(temp);                        //将该元素添加到新集合中
+        }
+    }
+    return newList;                                    //将新集合返回
+}
+</code></pre><p>###16.02_集合框架(去除ArrayList中重复自定义对象元素)(掌握)</p>
+</li>
+</ul>
+</li>
+<li>A:案例演示<ul>
+<li>需求：ArrayList去除集合中自定义对象元素的重复值(对象的成员变量值相同)</li>
+</ul>
+</li>
+<li>B:注意事项<ul>
+<li>重写equals()方法的</li>
+</ul>
+</li>
+</ul>
+<p>###16.03_集合框架(LinkedList的特有功能)(掌握)</p>
+<ul>
+<li>A:LinkedList类概述</li>
+<li>B:LinkedList类特有功能<ul>
+<li>public void addFirst(E e)及addLast(E e)</li>
+<li>public E getFirst()及getLast()</li>
+<li>public E removeFirst()及public E removeLast()</li>
+<li>public E get(int index);</li>
+</ul>
+</li>
+</ul>
+<p>###16.04_集合框架(栈和队列数据结构)(掌握)</p>
+<ul>
+<li>栈<ul>
+<li>先进后出 </li>
+</ul>
+</li>
+<li>队列<ul>
+<li>先进先出</li>
+</ul>
+</li>
+</ul>
+<p>###16.05_集合框架(用LinkedList模拟栈数据结构的集合并测试)(掌握)</p>
+<ul>
+<li><p>A:案例演示</p>
+<ul>
+<li>需求：请用LinkedList模拟栈数据结构的集合，并测试</li>
+<li>创建一个类将Linked中的方法封装</li>
+<li><pre><code>public class Stack {
+    private LinkedList list = new LinkedList();        //创建LinkedList对象
+
+    public void in(Object obj) {
+        list.addLast(obj);                            //封装addLast()方法
+    }
+
+    public Object out() {
+        return list.removeLast();                    //封装removeLast()方法
+    }
+
+    public boolean isEmpty() {
+        return list.isEmpty();                        //封装isEmpty()方法
+    }
+}
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<p>###16.06_集合框架(泛型概述和基本使用)(掌握)</p>
+<ul>
+<li>A:泛型概述</li>
+<li>B:泛型好处<ul>
+<li>提高安全性(将运行期的错误转换到编译期) </li>
+<li>省去强转的麻烦</li>
+</ul>
+</li>
+<li>C:泛型基本使用<ul>
+<li>&lt;&gt;中放的必须是引用数据类型 </li>
+</ul>
+</li>
+<li>D:泛型使用注意事项<ul>
+<li>前后的泛型必须一致,或者后面的泛型可以省略不写(1.7的新特性菱形泛型)  </li>
+</ul>
+</li>
+</ul>
+<p>###16.07_集合框架(ArrayList存储字符串和自定义对象并遍历泛型版)(掌握)</p>
+<ul>
+<li>A:案例演示<ul>
+<li>ArrayList存储字符串并遍历泛型版</li>
+</ul>
+</li>
+</ul>
+<p>###16.08_集合框架(泛型的由来)(了解)</p>
+<ul>
+<li>A:案例演示<ul>
+<li>泛型的由来:通过Object转型问题引入</li>
+<li>早期的Object类型可以接收任意的对象类型，但是在实际的使用中，会有类型转换的问题。也就存在这隐患，所以Java提供了泛型来解决这个安全问题。</li>
+</ul>
+</li>
+</ul>
+<p>###16.09_集合框架(泛型类的概述及使用)(了解)</p>
+<ul>
+<li>A:泛型类概述<t><ul>
+<li>把泛型定义在类上</li>
+</ul>
+</t></li>
+<li>B:定义格式<ul>
+<li>public class 类名&lt;泛型类型1,…&gt;</li>
+</ul>
+</li>
+<li>C:注意事项    <ul>
+<li>泛型类型必须是引用类型</li>
+</ul>
+</li>
+<li>D:案例演示<ul>
+<li>泛型类的使用</li>
+</ul>
+</li>
+</ul>
+<p>###16.10_集合框架(泛型方法的概述和使用)(了解)</p>
+<ul>
+<li>A:泛型方法概述<ul>
+<li>把泛型定义在方法上</li>
+</ul>
+</li>
+<li>B:定义格式    <ul>
+<li>public &lt;泛型类型&gt; 返回类型 方法名(泛型类型 变量名)</li>
+</ul>
+</li>
+<li>C:案例演示<ul>
+<li>泛型方法的使用</li>
+</ul>
+</li>
+</ul>
+<p>###16.11_集合框架(泛型接口的概述和使用)(了解)</p>
+<ul>
+<li>A:泛型接口概述<ul>
+<li>把泛型定义在接口上</li>
+</ul>
+</li>
+<li>B:定义格式    <ul>
+<li>public interface 接口名&lt;泛型类型&gt;</li>
+</ul>
+</li>
+<li>C:案例演示<ul>
+<li>泛型接口的使用</li>
+</ul>
+</li>
+</ul>
+<p>###16.12_集合框架(泛型高级之通配符)(了解)</p>
+<ul>
+<li>A:泛型通配符&lt;?&gt;<ul>
+<li>任意类型，如果没有明确，那么就是Object以及任意的Java类了</li>
+</ul>
+</li>
+<li>B:? extends E<ul>
+<li>向下限定，E及其子类</li>
+</ul>
+</li>
+<li>C:? super E<ul>
+<li>向上限定，E及其父类</li>
+</ul>
+</li>
+</ul>
+<p>###16.13_集合框架(增强for的概述和使用)(掌握)</p>
+<ul>
+<li>A:增强for概述<ul>
+<li>简化数组和Collection集合的遍历</li>
+</ul>
+</li>
+<li>B:格式：</li>
+<li><pre><code>for(元素数据类型 变量 : 数组或者Collection集合) {
+    使用变量即可，该变量就是元素
+}
+</code></pre></li>
+<li>C:案例演示<ul>
+<li>数组，集合存储元素用增强for遍历</li>
+</ul>
+</li>
+<li>D:好处<ul>
+<li>简化遍历</li>
+</ul>
+</li>
+</ul>
+<p>###16.14_集合框架(ArrayList存储字符串和自定义对象并遍历增强for版)(掌握)</p>
+<ul>
+<li><p>A:案例演示</p>
+<ul>
+<li>ArrayList存储字符串并遍历增强for版</li>
+<li><pre><code>ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;();
+list.add(&quot;a&quot;);
+list.add(&quot;b&quot;);
+list.add(&quot;c&quot;);
+list.add(&quot;d&quot;);
+
+for(String s : list) {
+    System.out.println(s);
+}
+</code></pre><p>###16.15_集合框架(三种迭代的能否删除)(掌握)</p>
+</li>
+</ul>
+</li>
+<li>普通for循环,可以删除,但是索引要–</li>
+<li>迭代器,可以删除,但是必须使用迭代器自身的remove方法,否则会出现并发修改异常</li>
+<li>增强for循环不能删除</li>
+</ul>
+<p>###16.16_集合框架(静态导入的概述和使用)(了解)</p>
+<ul>
+<li>A:静态导入概述</li>
+<li>B:格式：<ul>
+<li>import static 包名….类名.方法名;</li>
+<li>可以直接导入到方法的级别</li>
+</ul>
+</li>
+<li>C:注意事项<ul>
+<li>方法必须是静态的,如果有多个同名的静态方法，容易不知道使用谁?<br>这个时候要使用，必须加前缀。由此可见，意义不大，所以一般不用，但是要能看懂。</li>
+</ul>
+</li>
+</ul>
+<p>###16.17_集合框架(可变参数的概述和使用)(掌握)</p>
+<ul>
+<li>A:可变参数概述<ul>
+<li>定义方法的时候不知道该定义多少个参数</li>
+</ul>
+</li>
+<li>B:格式<ul>
+<li>修饰符 返回值类型 方法名(数据类型…  变量名){}</li>
+</ul>
+</li>
+<li>C:注意事项：<ul>
+<li>这里的变量其实是一个数组</li>
+<li>如果一个方法有可变参数，并且有多个参数，那么，可变参数肯定是最后一个</li>
+</ul>
+</li>
+</ul>
+<p>###16.18_集合框架(Arrays工具类的asList()方法的使用)(掌握)</p>
+<ul>
+<li>A:案例演示<ul>
+<li>Arrays工具类的asList()方法的使用</li>
+<li>Collection中toArray(T[] a)泛型版的集合转数组</li>
+</ul>
+</li>
+</ul>
+<p>###16.19_集合框架(集合嵌套之ArrayList嵌套ArrayList)(掌握)</p>
+<ul>
+<li>A:案例演示<ul>
+<li>集合嵌套之ArrayList嵌套ArrayList</li>
+</ul>
+</li>
+</ul>
+<p>###16.20_day16总结</p>
+<ul>
+<li>把今天的知识点总结一遍。</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/21/day27笔记/" rel="next" title="day27笔记">
+                <i class="fa fa-chevron-left"></i> day27笔记
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/21/day17笔记/" rel="prev" title="day17笔记">
+                day17笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="玖玖Kyuu" />
+          <p class="site-author-name" itemprop="name">玖玖Kyuu</p>
+          <p class="site-description motion-element" itemprop="description">生活</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">29</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">玖玖Kyuu</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

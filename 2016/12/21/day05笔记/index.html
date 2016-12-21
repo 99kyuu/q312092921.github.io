@@ -1,0 +1,918 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="###05.01_Java语言基础(数组概述和定义格式说明)(了解)
+
+A:为什么要有数组(容器)
+为了存储同种数据类型的多个值
+
+
+B:数组概念
+
+数组是存储同一种数据类型多个元素的集合。也可以看成是一个容器。
+数组既可以存储基本数据类型，也可以存储引用数据类型。
+
+
+C:数组定义格式
+* 数据类型[] 数组名 = new 数据类型[数组的长度];
+###05.02_Java语言基础(数组的初始">
+<meta property="og:type" content="article">
+<meta property="og:title" content="day05笔记">
+<meta property="og:url" content="http://www.inlife.xyz/2016/12/21/day05笔记/index.html">
+<meta property="og:site_name" content="In Life">
+<meta property="og:description" content="###05.01_Java语言基础(数组概述和定义格式说明)(了解)
+
+A:为什么要有数组(容器)
+为了存储同种数据类型的多个值
+
+
+B:数组概念
+
+数组是存储同一种数据类型多个元素的集合。也可以看成是一个容器。
+数组既可以存储基本数据类型，也可以存储引用数据类型。
+
+
+C:数组定义格式
+* 数据类型[] 数组名 = new 数据类型[数组的长度];
+###05.02_Java语言基础(数组的初始">
+<meta property="og:updated_time" content="2016-12-21T10:58:20.126Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="day05笔记">
+<meta name="twitter:description" content="###05.01_Java语言基础(数组概述和定义格式说明)(了解)
+
+A:为什么要有数组(容器)
+为了存储同种数据类型的多个值
+
+
+B:数组概念
+
+数组是存储同一种数据类型多个元素的集合。也可以看成是一个容器。
+数组既可以存储基本数据类型，也可以存储引用数据类型。
+
+
+C:数组定义格式
+* 数据类型[] 数组名 = new 数据类型[数组的长度];
+###05.02_Java语言基础(数组的初始">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> day05笔记 | In Life </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">In Life</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                day05笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-21T18:38:20+08:00" content="2016-12-21">
+              2016-12-21
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>###05.01_Java语言基础(数组概述和定义格式说明)(了解)</p>
+<ul>
+<li>A:为什么要有数组(容器)<ul>
+<li>为了存储同种数据类型的多个值</li>
+</ul>
+</li>
+<li><p>B:数组概念</p>
+<ul>
+<li>数组是存储同一种数据类型多个元素的集合。也可以看成是一个容器。</li>
+<li>数组既可以存储基本数据类型，也可以存储引用数据类型。</li>
+</ul>
+</li>
+<li><p>C:数组定义格式</p>
+<pre><code>* 数据类型[] 数组名 = new 数据类型[数组的长度];
+</code></pre><p>###05.02_Java语言基础(数组的初始化动态初始化)(掌握)</p>
+</li>
+<li>A:什么是数组的初始化<ul>
+<li>就是为数组开辟连续的内存空间，并为每个数组元素赋予值 </li>
+</ul>
+</li>
+<li>B:如何对数组进行初始化<ul>
+<li>a:动态初始化 只指定长度，由系统给出初始化值<ul>
+<li>int[] arr = new int[5];     </li>
+</ul>
+</li>
+<li>b:静态初始化 给出初始化值，由系统决定长度    </li>
+</ul>
+</li>
+<li>C:动态初始化的格式：<ul>
+<li>数据类型[] 数组名 = new 数据类型[数组长度];</li>
+</ul>
+</li>
+<li>D:案例演示<ul>
+<li>输出数组名称和数组元素</li>
+</ul>
+</li>
+</ul>
+<p>###05.03_Java语言基础(Java中的内存分配以及栈和堆的区别)</p>
+<ul>
+<li>A:栈(掌握)<ul>
+<li>存储局部变量 </li>
+</ul>
+</li>
+<li>B:堆(掌握)<ul>
+<li>存储new出来的数组或对象 </li>
+</ul>
+</li>
+<li>C:方法区<ul>
+<li>面向对象部分讲解 </li>
+</ul>
+</li>
+<li>D:本地方法区<ul>
+<li>和系统相关 </li>
+</ul>
+</li>
+<li>E:寄存器<ul>
+<li>给CPU使用<br>###05.04_Java语言基础(数组的内存图解1一个数组)(掌握)</li>
+</ul>
+</li>
+<li>A:画图演示<ul>
+<li>一个数组</li>
+</ul>
+</li>
+</ul>
+<p>###05.05_Java语言基础(数组的内存图解2二个数组)(了解)</p>
+<ul>
+<li>A:画图演示<ul>
+<li>二个不同的数组</li>
+</ul>
+</li>
+</ul>
+<p>###05.06_Java语言基础(数组的内存图解3三个引用两个数组)(了解)</p>
+<ul>
+<li>A:画图演示<ul>
+<li>三个引用，有两个数组的引用指向同一个地址</li>
+</ul>
+</li>
+</ul>
+<p>###05.07_Java语言基础(数组的初始化静态初始化及内存图)(掌握)</p>
+<ul>
+<li>A:静态初始化的格式：<ul>
+<li>格式：数据类型[] 数组名 = new 数据类型[]{元素1,元素2,…};</li>
+<li>简化格式：<ul>
+<li>数据类型[] 数组名 = {元素1,元素2,…};</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>B:案例演示<ul>
+<li>对数组的解释</li>
+<li>输出数组名称和数组元素</li>
+</ul>
+</li>
+<li>C:画图演示<ul>
+<li>一个数组</li>
+</ul>
+</li>
+</ul>
+<p>###05.08_Java语言基础(数组操作的两个常见小问题越界和空指针)(掌握)</p>
+<ul>
+<li>A:案例演示<ul>
+<li>a:ArrayIndexOutOfBoundsException:数组索引越界异常<ul>
+<li>原因：你访问了不存在的索引。</li>
+</ul>
+</li>
+<li>b:NullPointerException:空指针异常<ul>
+<li>原因：数组已经不在指向堆内存了。而你还用数组名去访问元素。</li>
+<li>int[] arr = {1,2,3};</li>
+<li>arr = null;</li>
+<li>System.out.println(arr[0]);</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>###05.09_Java语言基础(数组的操作1遍历)(掌握)</p>
+<ul>
+<li><p>A:案例演示</p>
+<ul>
+<li>数组遍历：就是依次输出数组中的每一个元素。</li>
+<li>数组的属性:arr.length数组的长度</li>
+<li><p>数组的最大索引:arr.length - 1;</p>
+<pre><code>public static void print(int[] arr) {
+    for (int i = 0;i &lt; arr.length ;i++ ) {
+        System.out.print(arr[i] + &quot; &quot;);
+    }
+}
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<p>###05.10_Java语言基础(数组的操作2获取最值)(掌握)</p>
+<ul>
+<li><p>A:案例演示</p>
+<ul>
+<li><p>数组获取最值(获取数组中的最大值最小值)</p>
+<pre><code>public static int getMax(int[] arr) {
+    int max = arr[0];
+    for (int i = 1;i &lt; arr.length ;i++ ) {            //从数组的第二个元素开始遍历
+        if (max &lt; arr[i]) {                            //如果max记录的值小于的数组中的元素
+            max = arr[i];                            //max记录住较大的
+        }
+    }
+
+    return max;
+}
+</code></pre><p>###05.11_Java语言基础(数组的操作3反转)(掌握)</p>
+</li>
+</ul>
+</li>
+<li><p>A:案例演示</p>
+<ul>
+<li><p>数组元素反转(就是把元素对调)</p>
+<pre><code>public static void reverseArray(int[] arr) {
+    for (int i = 0;i &lt; arr.length / 2 ; i++) {
+        //arr[0]和arr[arr.length-1-0]交换
+        //arr[1]和arr[arr.length-1-1]交换
+        //arr[2]和arr[arr.lentth-1-2]
+        //...
+
+        int temp = arr[i];
+        arr[i] = arr[arr.length-1-i];
+        arr[arr.length-1-i] = temp;
+    }
+}
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<p>###05.12_Java语言基础(数组的操作4查表法)(掌握)</p>
+<ul>
+<li><p>A:案例演示</p>
+<ul>
+<li><p>数组查表法(根据键盘录入索引,查找对应星期)</p>
+<pre><code>public static char getWeek(int week) {
+    char[] arr = {&apos; &apos;,&apos;一&apos;,&apos;二&apos;,&apos;三&apos;,&apos;四&apos;,&apos;五&apos;,&apos;六&apos;,&apos;日&apos;};        //定义了一张星期表
+    return arr[week];                                            //通过索引获取表中的元素
+}
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<p>###05.13_Java语言基础(数组的操作5基本查找)(掌握)</p>
+<ul>
+<li><p>A:案例演示</p>
+<ul>
+<li><p>数组元素查找(查找指定元素第一次在数组中出现的索引)</p>
+<pre><code>public static int getIndex(int[] arr,int value) {
+    for (int i = 0;i &lt; arr.length ;i++ ) {                //数组的遍历
+        if (arr[i] == value) {                            //如果数组中的元素与查找的元素匹配
+            return i;
+        }
+    }
+    return -1;
+} 
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<p>###05.14_Java语言基础(二维数组概述和格式1的讲解)(了解)</p>
+<ul>
+<li>A:二维数组概述</li>
+<li>B:二维数组格式1<pre><code>* int[][] arr = new int[3][2]; 
+</code></pre></li>
+<li>C:二维数组格式1的解释</li>
+<li><p>D:注意事项</p>
+<ul>
+<li>a:以下格式也可以表示二维数组<ul>
+<li>1:数据类型 数组名[][] = new 数据类型[m][n];</li>
+<li>2:数据类型[] 数组名[] = new 数据类型[m][n];</li>
+</ul>
+</li>
+<li>B:注意下面定义的区别</li>
+<li><pre><code>int x;
+int y;
+int x,y;
+
+int[] x;
+int[] y[];
+
+int[] x,y[];    x是一维数组,y是二维数组
+</code></pre></li>
+</ul>
+</li>
+<li>E:案例演示<ul>
+<li>定义二维数组，输出二维数组名称，一维数组名称，一个元素</li>
+</ul>
+</li>
+</ul>
+<p>###05.15_Java语言基础(二维数组格式1的内存图解)(了解)</p>
+<ul>
+<li>A:画图演示<ul>
+<li>画图讲解上面的二维数组名称，一维数组名称，一个元素的值的问题</li>
+</ul>
+</li>
+</ul>
+<p>###05.16_Java语言基础(二维数组格式2的讲解及其内存图解)(了解)</p>
+<ul>
+<li>A:二维数组格式2<pre><code>* int[][] arr = new int[3][]; 
+</code></pre></li>
+<li>B:二维数组格式2的解释</li>
+<li>C:案例演示<ul>
+<li>讲解格式，输出数据，并画内存图</li>
+</ul>
+</li>
+</ul>
+<p>###05.17_Java语言基础(二维数组格式3的讲解及其内存图解)(了解)</p>
+<ul>
+<li>A:二维数组格式3<pre><code>* int[][] arr = {{1,2,3},{4,5},{6,7,8,9}}; 
+</code></pre></li>
+<li>B:二维数组格式3的解释</li>
+<li>C:案例演示<ul>
+<li>讲解格式，输出数据，并画内存图</li>
+</ul>
+</li>
+</ul>
+<p>###05.18_Java语言基础(二维数组练习1遍历)(掌握)</p>
+<ul>
+<li><p>A:案例演示</p>
+<ul>
+<li><p>需求：二维数组遍历</p>
+</li>
+<li><p>外循环控制的是二维数组的长度，其实就是一维数组的个数。</p>
+</li>
+<li><p>内循环控制的是一维数组的长度。</p>
+<pre><code>int[][] arr = {{1,2,3},{4,5},{6,7,8,9}};
+
+for (int i = 0;i &lt; arr.length ;i++ ) {            //获取到每个二维数组中的一维数组
+    for (int j = 0;j &lt; arr[i].length ;j++ ) {    //获取每个一维数组中的元素
+        System.out.print(arr[i][j] + &quot; &quot;);
+    }
+
+    System.out.println();
+}
+</code></pre><p>###05.19_Java语言基础(二维数组练习2求和)(掌握)</p>
+</li>
+</ul>
+</li>
+<li>A:案例演示</li>
+<li><pre><code>需求：公司年销售额求和
+某公司按照季度和月份统计的数据如下：单位(万元)
+第一季度：22,66,44
+第二季度：77,33,88
+第三季度：25,45,65
+第四季度：11,66,99
+
+int[][] arr = {{22,66,44},{77,33,88},{25,45,65},{11,66,99}};
+
+int sum = 0;                                    //定义变量,记录每次相加的结果
+for (int i = 0;i &lt; arr.length ;i++ ) {            //获取每一个一维数组
+    for (int j = 0;j &lt; arr[i].length ;j++ ) {    //获取每一个一维数组中的元素
+        sum = sum + arr[i][j];                    //累加
+    }
+}
+
+System.out.println(sum);
+</code></pre><p>###05.20_Java语言基础(思考题Java中的参数传递问题及图解)(掌握)</p>
+</li>
+<li>A:案例演示</li>
+<li><pre><code>看程序写结果，并画内存图解释
+public static void main(String[] args) {
+    int a = 10;
+    int b = 20;
+    System.out.println(&quot;a:&quot;+a+&quot;,b:&quot;+b);
+    change(a,b);
+    System.out.println(&quot;a:&quot;+a+&quot;,b:&quot;+b);
+
+    int[] arr = {1,2,3,4,5};
+    change(arr);
+    System.out.println(arr[1]);
+}
+
+public static void change(int a,int b) {
+    System.out.println(&quot;a:&quot;+a+&quot;,b:&quot;+b);
+    a = b;
+    b = a + b;
+    System.out.println(&quot;a:&quot;+a+&quot;,b:&quot;+b);
+}
+
+public static void change(int[] arr) {
+    for(int x=0; x&lt;arr.length; x++) {
+        if(arr[x]%2==0) {
+            arr[x]*=2;
+        }
+    }
+}
+</code></pre></li>
+</ul>
+<p>###05.21_day05总结</p>
+<ul>
+<li>把今天的知识点总结一遍。</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/21/day06笔记/" rel="next" title="day06笔记">
+                <i class="fa fa-chevron-left"></i> day06笔记
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/21/day15笔记/" rel="prev" title="day15笔记">
+                day15笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="玖玖Kyuu" />
+          <p class="site-author-name" itemprop="name">玖玖Kyuu</p>
+          <p class="site-description motion-element" itemprop="description">生活</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">29</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">玖玖Kyuu</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

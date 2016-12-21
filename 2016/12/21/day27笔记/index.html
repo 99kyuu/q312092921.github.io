@@ -1,0 +1,877 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="day27授课目录：
+###27.01_反射(类的加载概述和加载时机)
+
+A:类的加载概述
+
+当程序要使用某个类时，如果该类还未被加载到内存中，则系统会通过加载，连接，初始化三步来实现对这个类进行初始化。
+加载 
+就是指将class文件读入内存，并为之创建一个Class对象。任何类被使用时系统都会建立一个Class对象。
+
+
+连接
+
+验证 是否有正确的内部结构，并和其他类协调一致
+准备 负责为类的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="day27笔记">
+<meta property="og:url" content="http://www.inlife.xyz/2016/12/21/day27笔记/index.html">
+<meta property="og:site_name" content="In Life">
+<meta property="og:description" content="day27授课目录：
+###27.01_反射(类的加载概述和加载时机)
+
+A:类的加载概述
+
+当程序要使用某个类时，如果该类还未被加载到内存中，则系统会通过加载，连接，初始化三步来实现对这个类进行初始化。
+加载 
+就是指将class文件读入内存，并为之创建一个Class对象。任何类被使用时系统都会建立一个Class对象。
+
+
+连接
+
+验证 是否有正确的内部结构，并和其他类协调一致
+准备 负责为类的">
+<meta property="og:updated_time" content="2016-12-21T10:23:31.309Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="day27笔记">
+<meta name="twitter:description" content="day27授课目录：
+###27.01_反射(类的加载概述和加载时机)
+
+A:类的加载概述
+
+当程序要使用某个类时，如果该类还未被加载到内存中，则系统会通过加载，连接，初始化三步来实现对这个类进行初始化。
+加载 
+就是指将class文件读入内存，并为之创建一个Class对象。任何类被使用时系统都会建立一个Class对象。
+
+
+连接
+
+验证 是否有正确的内部结构，并和其他类协调一致
+准备 负责为类的">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> day27笔记 | In Life </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">In Life</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                day27笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-21T18:59:15+08:00" content="2016-12-21">
+              2016-12-21
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>day27授课目录：</p>
+<p>###27.01_反射(类的加载概述和加载时机)</p>
+<ul>
+<li><p>A:类的加载概述</p>
+<ul>
+<li>当程序要使用某个类时，如果该类还未被加载到内存中，则系统会通过加载，连接，初始化三步来实现对这个类进行初始化。</li>
+<li>加载 <ul>
+<li>就是指将class文件读入内存，并为之创建一个Class对象。任何类被使用时系统都会建立一个Class对象。</li>
+</ul>
+</li>
+<li><p>连接</p>
+<ul>
+<li>验证 是否有正确的内部结构，并和其他类协调一致</li>
+<li>准备 负责为类的静态成员分配内存，并设置默认初始化值</li>
+<li>解析 将类的二进制数据中的符号引用替换为直接引用</li>
+</ul>
+</li>
+<li><p>初始化 就是我们以前讲过的初始化步骤</p>
+</li>
+</ul>
+</li>
+<li>B:加载时机<ul>
+<li>创建类的实例</li>
+<li>访问类的静态变量，或者为静态变量赋值</li>
+<li>调用类的静态方法</li>
+<li>使用反射方式来强制创建某个类或接口对应的java.lang.Class对象</li>
+<li>初始化某个类的子类</li>
+<li>直接使用java.exe命令来运行某个主类</li>
+</ul>
+</li>
+</ul>
+<p>###27.02_反射(类加载器的概述和分类)</p>
+<ul>
+<li>A:类加载器的概述<ul>
+<li>负责将.class文件加载到内存中，并为之生成对应的Class对象。虽然我们不需要关心类加载机制，但是了解这个机制我们就能更好的理解程序的运行。</li>
+</ul>
+</li>
+<li>B:类加载器的分类<ul>
+<li>Bootstrap ClassLoader 根类加载器</li>
+<li>Extension ClassLoader 扩展类加载器</li>
+<li>Sysetm ClassLoader 系统类加载器</li>
+</ul>
+</li>
+<li>C:类加载器的作用<ul>
+<li>Bootstrap ClassLoader 根类加载器<ul>
+<li>也被称为引导类加载器，负责Java核心类的加载</li>
+<li>比如System,String等。在JDK中JRE的lib目录下rt.jar文件中</li>
+</ul>
+</li>
+<li>Extension ClassLoader 扩展类加载器<ul>
+<li>负责JRE的扩展目录中jar包的加载。</li>
+<li>在JDK中JRE的lib目录下ext目录</li>
+</ul>
+</li>
+<li>Sysetm ClassLoader 系统类加载器<ul>
+<li>负责在JVM启动时加载来自java命令的class文件，以及classpath环境变量所指定的jar包和类路径</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>###27.03_反射(反射概述)</p>
+<ul>
+<li><p>A:反射概述</p>
+<ul>
+<li>JAVA反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；</li>
+<li>对于任意一个对象，都能够调用它的任意一个方法和属性；</li>
+<li>这种动态获取的信息以及动态调用对象的方法的功能称为java语言的反射机制。</li>
+<li>要想解剖一个类,必须先要获取到该类的字节码文件对象。</li>
+<li>而解剖使用的就是Class类中的方法，所以先要获取到每一个字节码文件对应的Class类型的对象。</li>
+</ul>
+</li>
+<li><p>B:三种方式</p>
+<ul>
+<li>a:Object类的getClass()方法,判断两个对象是否是同一个字节码文件</li>
+<li>b:静态属性class,锁对象</li>
+<li>c:Class类中静态方法forName(),读取配置文件</li>
+</ul>
+</li>
+<li>C:案例演示<ul>
+<li>获取class文件对象的三种方式</li>
+</ul>
+</li>
+</ul>
+<p>###27.04_反射(Class.forName()读取配置文件举例)</p>
+<ul>
+<li>榨汁机(Juicer)榨汁的案例</li>
+<li><p>分别有水果(Fruit)苹果(Apple)香蕉(Banana)桔子(Orange)榨汁(squeeze)</p>
+<pre><code>public class Demo2_Reflect {
+
+    /**
+     * 榨汁机(Juicer)榨汁的案例
+     * 分别有水果(Fruit)苹果(Apple)香蕉(Banana)桔子(Orange)榨汁(squeeze)
+     * @throws Exception 
+     */
+    public static void main(String[] args) throws Exception {
+        /*Juicer j = new Juicer();
+        //j.run(new Apple());
+        j.run(new Orange());*/
+        BufferedReader br = new BufferedReader(new FileReader(&quot;config.properties&quot;));    //创建输入流对象,关联配置文件
+        Class&lt;?&gt; clazz = Class.forName(br.readLine());                                    //读取配置文件一行内容,获取该类的字节码对象
+        Fruit f = (Fruit) clazz.newInstance();                                            //通过字节码对象创建实例对象
+        Juicer j = new Juicer();
+        j.run(f);
+    }
+
+}
+interface Fruit {
+    public void squeeze();
+}
+
+class Apple implements Fruit {
+    public void squeeze() {
+        System.out.println(&quot;榨出一杯苹果汁儿&quot;);
+    }
+}
+
+class Orange implements Fruit {
+    public void squeeze() {
+        System.out.println(&quot;榨出一杯桔子汁儿&quot;);
+    }
+}
+
+class Juicer {
+    public void run(Fruit f) {
+        f.squeeze();
+    }
+
+}
+</code></pre><p>###27.05_反射(通过反射获取带参构造方法并使用)</p>
+</li>
+<li>Constructor<ul>
+<li>Class类的newInstance()方法是使用该类无参的构造函数创建对象, 如果一个类没有无参的构造函数, 就不能这样创建了,可以调用Class类的getConstructor(String.class,int.class)方法获取一个指定的构造函数然后再调用Constructor类的newInstance(“张三”,20)方法创建对象</li>
+</ul>
+</li>
+</ul>
+<p>###27.06_反射(通过反射获取成员变量并使用)</p>
+<ul>
+<li>Field<ul>
+<li>Class.getField(String)方法可以获取类中的指定字段(可见的), 如果是私有的可以用getDeclaedField(“name”)方法获取,通过set(obj, “李四”)方法可以设置指定对象上该字段的值, 如果是私有的需要先调用setAccessible(true)设置访问权限,用获取的指定的字段调用get(obj)可以获取指定对象中该字段的值</li>
+</ul>
+</li>
+</ul>
+<p>###27.07_反射(通过反射获取方法并使用)</p>
+<ul>
+<li>Method<ul>
+<li>Class.getMethod(String, Class…) 和 Class.getDeclaredMethod(String, Class…)方法可以获取类中的指定方法,调用invoke(Object, Object…)可以调用该方法,Class.getMethod(“eat”) invoke(obj) Class.getMethod(“eat”,int.class) invoke(obj,10)</li>
+</ul>
+</li>
+</ul>
+<p>###27.08_反射(通过反射越过泛型检查)</p>
+<ul>
+<li>A:案例演示<ul>
+<li>ArrayList<integer>的一个对象，在这个集合中添加一个字符串数据，如何实现呢？</integer></li>
+</ul>
+</li>
+</ul>
+<p>###27.09_反射(通过反射写一个通用的设置某个对象的某个属性为指定的值)</p>
+<ul>
+<li>A:案例演示<ul>
+<li>public void setProperty(Object obj, String propertyName, Object value){}，此方法可将obj对象中名为propertyName的属性的值设置为value。</li>
+</ul>
+</li>
+</ul>
+<p>###27.10_反射(练习)</p>
+<ul>
+<li>已知一个类，定义如下： <ul>
+<li>package cn.itcast.heima;</li>
+<li>public class DemoClass {<br> public void run() {<pre><code>System.out.println(&quot;welcome to heima!&quot;);
+</code></pre> }<br>}</li>
+<li>(1) 写一个Properties格式的配置文件，配置类的完整名称。 </li>
+<li>(2) 写一个程序，读取这个Properties配置文件，获得类的完整名称并加载这个类，用反射的方式运行run方法。</li>
+</ul>
+</li>
+</ul>
+<p>###27.11_反射(动态代理的概述和实现)</p>
+<ul>
+<li><p>A:动态代理概述</p>
+<ul>
+<li>代理：本来应该自己做的事情，请了别人来做，被请的人就是代理对象。</li>
+<li>举例：春节回家买票让人代买</li>
+<li><p>动态代理：在程序运行过程中产生的这个对象,而程序运行过程中产生对象其实就是我们刚才反射讲解的内容，所以，动态代理其实就是通过反射来生成一个代理</p>
+</li>
+<li><p>在Java中java.lang.reflect包下提供了一个Proxy类和一个InvocationHandler接口，通过使用这个类和接口就可以生成动态代理对象。JDK提供的代理只能针对接口做代理。我们有更强大的代理cglib，Proxy类中的方法创建动态代理类对象</p>
+</li>
+<li>public static Object newProxyInstance(ClassLoader loader,Class&lt;?&gt;[] interfaces,InvocationHandler h)</li>
+<li>最终会调用InvocationHandler的方法</li>
+<li>InvocationHandler Object invoke(Object proxy,Method method,Object[] args)</li>
+</ul>
+</li>
+</ul>
+<p>###27.12_设计模式(模版(Template)设计模式概述和使用)</p>
+<ul>
+<li>A:模版设计模式概述<ul>
+<li>模版方法模式就是定义一个算法的骨架，而将具体的算法延迟到子类中来实现</li>
+</ul>
+</li>
+<li>B:优点和缺点<ul>
+<li>a:优点<ul>
+<li>使用模版方法模式，在定义算法骨架的同时，可以很灵活的实现具体的算法，满足用户灵活多变的需求</li>
+</ul>
+</li>
+<li>b:缺点<ul>
+<li>如果算法骨架有修改的话，则需要修改抽象类<br>1,装饰<br>2,单例<br>3,简单工厂<br>4,工厂方法<br>5,适配器<br>6,模版</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>###27.13_JDK5新特性(自己实现枚举类)</p>
+<ul>
+<li>A:枚举概述<ul>
+<li>是指将变量的值一一列出来,变量的值只限于列举出来的值的范围内。举例：一周只有7天，一年只有12个月等。</li>
+</ul>
+</li>
+<li>B:回想单例设计模式：单例类是一个类只有一个实例<ul>
+<li>那么多例类就是一个类有多个实例，但不是无限个数的实例，而是有限个数的实例。这才能是枚举类。</li>
+</ul>
+</li>
+<li>C:案例演示<ul>
+<li>自己实现枚举类<br>1,自动拆装箱<br>2,泛型<br>3,可变参数<br>4,静态导入<br>5,增强for循环<br>6,互斥锁<br>7,枚举</li>
+</ul>
+</li>
+</ul>
+<p>###27.14_JDK5新特性(通过enum实现枚举类)</p>
+<ul>
+<li>A:案例演示<ul>
+<li>通过enum实现枚举类</li>
+</ul>
+</li>
+</ul>
+<p>###27.15_JDK5新特性(枚举的注意事项)</p>
+<ul>
+<li>A:案例演示<ul>
+<li>定义枚举类要用关键字enum</li>
+<li>所有枚举类都是Enum的子类</li>
+<li>枚举类的第一行上必须是枚举项，最后一个枚举项后的分号是可以省略的，但是如果枚举类有其他的东西，这个分号就不能省略。建议不要省略</li>
+<li>枚举类可以有构造器，但必须是private的，它默认的也是private的。</li>
+<li>枚举类也可以有抽象方法，但是枚举项必须重写该方法</li>
+<li>枚举在switch语句中的使用</li>
+</ul>
+</li>
+</ul>
+<p>###27.16_JDK5新特性(枚举类的常见方法)</p>
+<ul>
+<li>A:枚举类的常见方法<ul>
+<li>int ordinal()</li>
+<li>int compareTo(E o)</li>
+<li>String name()</li>
+<li>String toString()</li>
+<li><t> T valueOf(Class<t> type,String name)</t></t></li>
+<li>values() </li>
+<li>此方法虽然在JDK文档中查找不到，但每个枚举类都具有该方法，它遍历枚举类的所有枚举值非常方便</li>
+</ul>
+</li>
+<li>B:案例演示<ul>
+<li>枚举类的常见方法</li>
+</ul>
+</li>
+</ul>
+<p>###27.17_JDK7新特性(JDK7的六个新特性回顾和讲解)</p>
+<ul>
+<li>A:二进制字面量</li>
+<li>B:数字字面量可以出现下划线</li>
+<li>C:switch 语句可以用字符串</li>
+<li>D:泛型简化,菱形泛型</li>
+<li>E:异常的多个catch合并,每个异常用或|</li>
+<li>F:try-with-resources 语句</li>
+</ul>
+<p>###27.18_JDK8新特性(JDK8的新特性)</p>
+<ul>
+<li>接口中可以定义有方法体的方法,如果是非静态,必须用default修饰    </li>
+<li><p>如果是静态的就不用了</p>
+<pre><code>class Test {
+    public void run() {
+        final int x = 10;
+        class Inner {
+            public void method() {
+                System.out.println(x);
+            }
+        }
+
+        Inner i = new Inner();
+        i.method();
+    }
+
+}
+
+局部内部类在访问他所在方法中的局部变量必须用final修饰,为什么?
+因为当调用这个方法时,局部变量如果没有用final修饰,他的生命周期和方法的生命周期是一样的,当方法弹栈,这个局部变量也会消失,那么如果局部内部类对象还没有马上消失想用这个局部变量,就没有了,如果用final修饰会在类加载的时候进入常量池,即使方法弹栈,常量池的常量还在,也可以继续使用
+</code></pre><p>###27.19_day27总结</p>
+</li>
+<li>把今天的知识点总结一遍。</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/21/day14笔记/" rel="next" title="day14笔记">
+                <i class="fa fa-chevron-left"></i> day14笔记
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/21/day16笔记/" rel="prev" title="day16笔记">
+                day16笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="玖玖Kyuu" />
+          <p class="site-author-name" itemprop="name">玖玖Kyuu</p>
+          <p class="site-description motion-element" itemprop="description">生活</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">29</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">玖玖Kyuu</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
