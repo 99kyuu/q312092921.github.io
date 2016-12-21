@@ -85,8 +85,7 @@
 
 
 <meta name="description" content="day27授课目录：
-###27.01_反射(类的加载概述和加载时机)###
-
+27.01_反射(类的加载概述和加载时机)
 A:类的加载概述
 
 当程序要使用某个类时，如果该类还未被加载到内存中，则系统会通过加载，连接，初始化三步来实现对这个类进行初始化。
@@ -97,14 +96,13 @@ A:类的加载概述
 连接
 
 验证 是否有正确的内部结构，并和其他类协调一致
-准备 负责">
+准备 负责为类的静态成员">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Day27笔记">
 <meta property="og:url" content="http://www.inlife.xyz/2016/12/22/day27笔记/index.html">
 <meta property="og:site_name" content="In Life">
 <meta property="og:description" content="day27授课目录：
-###27.01_反射(类的加载概述和加载时机)###
-
+27.01_反射(类的加载概述和加载时机)
 A:类的加载概述
 
 当程序要使用某个类时，如果该类还未被加载到内存中，则系统会通过加载，连接，初始化三步来实现对这个类进行初始化。
@@ -115,13 +113,12 @@ A:类的加载概述
 连接
 
 验证 是否有正确的内部结构，并和其他类协调一致
-准备 负责">
+准备 负责为类的静态成员">
 <meta property="og:updated_time" content="2016-12-21T16:50:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Day27笔记">
 <meta name="twitter:description" content="day27授课目录：
-###27.01_反射(类的加载概述和加载时机)###
-
+27.01_反射(类的加载概述和加载时机)
 A:类的加载概述
 
 当程序要使用某个类时，如果该类还未被加载到内存中，则系统会通过加载，连接，初始化三步来实现对这个类进行初始化。
@@ -132,7 +129,7 @@ A:类的加载概述
 连接
 
 验证 是否有正确的内部结构，并和其他类协调一致
-准备 负责">
+准备 负责为类的静态成员">
 
 
 
@@ -330,8 +327,7 @@ A:类的加载概述
 
       
         <p>day27授课目录：</p>
-<p>###27.01_反射(类的加载概述和加载时机)###</p>
-<ul>
+<h3 id="27-01-反射-类的加载概述和加载时机"><a href="#27-01-反射-类的加载概述和加载时机" class="headerlink" title="27.01_反射(类的加载概述和加载时机)"></a>27.01_反射(类的加载概述和加载时机)</h3><ul>
 <li><p>A:类的加载概述</p>
 <ul>
 <li>当程序要使用某个类时，如果该类还未被加载到内存中，则系统会通过加载，连接，初始化三步来实现对这个类进行初始化。</li>
@@ -360,8 +356,7 @@ A:类的加载概述
 </ul>
 </li>
 </ul>
-<p>###27.02_反射(类加载器的概述和分类)###</p>
-<ul>
+<h3 id="27-02-反射-类加载器的概述和分类"><a href="#27-02-反射-类加载器的概述和分类" class="headerlink" title="27.02_反射(类加载器的概述和分类)"></a>27.02_反射(类加载器的概述和分类)</h3><ul>
 <li>A:类加载器的概述<ul>
 <li>负责将.class文件加载到内存中，并为之生成对应的Class对象。虽然我们不需要关心类加载机制，但是了解这个机制我们就能更好的理解程序的运行。</li>
 </ul>
@@ -390,8 +385,7 @@ A:类的加载概述
 </ul>
 </li>
 </ul>
-<p>###27.03_反射(反射概述)###</p>
-<ul>
+<h3 id="27-03-反射-反射概述"><a href="#27-03-反射-反射概述" class="headerlink" title="27.03_反射(反射概述)"></a>27.03_反射(反射概述)</h3><ul>
 <li><p>A:反射概述</p>
 <ul>
 <li>JAVA反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；</li>
@@ -413,8 +407,7 @@ A:类的加载概述
 </ul>
 </li>
 </ul>
-<p>###27.04_反射(Class.forName()读取配置文件举例)###</p>
-<ul>
+<h3 id="27-04-反射-Class-forName-读取配置文件举例"><a href="#27-04-反射-Class-forName-读取配置文件举例" class="headerlink" title="27.04_反射(Class.forName()读取配置文件举例)"></a>27.04_反射(Class.forName()读取配置文件举例)</h3><ul>
 <li>榨汁机(Juicer)榨汁的案例</li>
 <li><p>分别有水果(Fruit)苹果(Apple)香蕉(Banana)桔子(Orange)榨汁(squeeze)</p>
 <pre><code>public class Demo2_Reflect {
@@ -621,7 +614,8 @@ class Juicer {
 因为当调用这个方法时,局部变量如果没有用final修饰,他的生命周期和方法的生命周期是一样的,当方法弹栈,这个局部变量也会消失,那么如果局部内部类对象还没有马上消失想用这个局部变量,就没有了,如果用final修饰会在类加载的时候进入常量池,即使方法弹栈,常量池的常量还在,也可以继续使用
 </code></pre><p>###27.19_day27总结###</p>
 </li>
-<li>把今天的知识点总结一遍。</li>
+<li><p>把今天的知识点总结一遍。</p>
+</li>
 </ul>
 
       
@@ -775,7 +769,7 @@ class Juicer {
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#27-01-反射-类的加载概述和加载时机"><span class="nav-number">1.</span> <span class="nav-text">27.01_反射(类的加载概述和加载时机)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#27-02-反射-类加载器的概述和分类"><span class="nav-number">2.</span> <span class="nav-text">27.02_反射(类加载器的概述和分类)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#27-03-反射-反射概述"><span class="nav-number">3.</span> <span class="nav-text">27.03_反射(反射概述)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#27-04-反射-Class-forName-读取配置文件举例"><span class="nav-number">4.</span> <span class="nav-text">27.04_反射(Class.forName()读取配置文件举例)</span></a></li></ol></div>
             
           </div>
         </section>
