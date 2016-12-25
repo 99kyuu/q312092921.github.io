@@ -288,7 +288,7 @@ B:案例演示
 HashSet存储字符串并遍历
  HashSet&lt;String&gt; hs = new HashSet&lt;&gt;();
 boolean b1 = hs.add(&quot;a&quot;);
-bo
+boolean b2 = hs.add(&quot;a&quot;);       
           ...
 
           <div class="post-more-link text-center">
@@ -398,7 +398,8 @@ A:案例演示
  * 需求：ArrayList去除集合中字符串的重复值(字符串的内容相同)
  * 思路：创建新集合方式
  */
-pub
+public static void main(String[] args) {
+  
           ...
 
           <div class="post-more-link text-center">
@@ -508,7 +509,14 @@ B:案例演示
 
 需求：校验qq号码.
 
-1:要求必须是5
+1:要求必须是5-15位数字
+2:0不能开头
+3:必须都是数字
+
+
+a:非正则表达式实现
+
+b:
           ...
 
           <div class="post-more-link text-center">
@@ -620,7 +628,9 @@ StringBuffer是一个可变的字符序列
 
 
 
-###
+###13.02_常见对象(StringBuffer类的构造方法)
+
+A:String
           ...
 
           <div class="post-more-link text-center">
@@ -731,7 +741,9 @@ public static final InputStream in; 标准的输入流，对应着键盘录入�
 
 
 
-C
+C:一般方法
+
+hasNextXxx()  判断是否还有下一个输入项,其中Xxx可
           ...
 
           <div class="post-more-link text-center">
@@ -840,7 +852,14 @@ C:集成开发环境 IDE
 
 D:Eclipse和MyEclipse的区别
 a:Eclipse是一种可扩展的开放源代码的IDE。
-b:Eclipse的
+b:Eclipse的特点描述
+免费
+纯Java语言编写
+免安装
+扩展性强
+
+
+c:MyEclipse
           ...
 
           <div class="post-more-link text-center">
@@ -954,7 +973,9 @@ B:包的概述
 
 方案1：按照功能分
     com.heima.add
-        AddStuden
+        AddStudent
+        AddTeacher
+    com.heima.delet
           ...
 
           <div class="post-more-link text-center">
@@ -1073,7 +1094,11 @@ C:案例演示
 ###09.02_面向对象(多态中的成员访问特点之成员变量)
 
 成员变量
-编译看左边(父类)，
+编译看左边(父类)，运行看左边(父类)。
+
+
+
+###09.03_面向对象(多态中的成员访问特点之成
           ...
 
           <div class="post-more-link text-center">
@@ -1184,7 +1209,11 @@ B:代码块分类
 
 C:常见代码块的应用
 a:局部代码块 
-在方法中出现；限
+在方法中出现；限定变量生命周期，及早释放，提高内存利用率
+
+
+b:构造代码块 (初始化块)
+在类
           ...
 
           <div class="post-more-link text-center">
@@ -1296,7 +1325,11 @@ c:没有具体的返回值return;
 
 
 
-###07.02_面向对象(构造方法的重载及注意事项
+###07.02_面向对象(构造方法的重载及注意事项)(掌握)
+
+A:案例演示
+构造方法的重载
+重载:方法名相同,与返回值类型无关(
           ...
 
           <div class="post-more-link text-center">

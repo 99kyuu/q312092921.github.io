@@ -307,7 +307,8 @@ A:类的加载概述
 
 连接
 
-验证 是否有
+验证 是否有正确的内部结构，并和其他类协调一致
+准备 负责为类的静态成员分配内存，并设置默认
           ...
 
           <div class="post-more-link text-center">
@@ -414,7 +415,11 @@ A:计算机网络
 
 
 B:网络编程
-就是用来实现网络互连的不同计算机上运行的程序间可以进行
+就是用来实现网络互连的不同计算机上运行的程序间可以进行数据交换。
+
+
+
+###26.02_网络编程(网络编程三要素之IP概述)(掌握)
           ...
 
           <div class="post-more-link text-center">
@@ -521,7 +526,12 @@ B:网络编程
 
 (1)控制类的创建，不让其他类来创建本类的对象。private
 (2)在本类中定义一个本类的对象。Singleton s;
-(3)提供公共的访问方式。  public static Singleton g
+(3)提供公共的访问方式。  public static Singleton getInstance(){return s}
+
+
+单例写法两种：
+
+(1)饿汉式
           ...
 
           <div class="post-more-link text-center">
@@ -635,7 +645,9 @@ QQ同时和多个人一起视频
 
 
 
-###24.0
+###24.02_多线程(多线程并行和并发的区别)(了解)
+
+并行就是两个任务同时运行，就是甲
           ...
 
           <div class="post-more-link text-center">
@@ -744,7 +756,11 @@ QQ同时和多个人一起视频
 
 ###23.03_File类递归练习(拷贝)
 
-需求:3,从键盘接收两个文件夹路径,把其中一个文件夹中(包含内容)拷
+需求:3,从键盘接收两个文件夹路径,把其中一个文件夹中(包含内容)拷贝到另一个文件夹中
+
+###23.04_File类递归练习(按层级打印)
+
+需求
           ...
 
           <div class="post-more-link text-center">
@@ -852,7 +868,7 @@ QQ同时和多个人一起视频
 2.使用方式
 
 整合两个: SequenceInputStream(InputStream, InputStream)
-FileInput
+FileInputStream fis1 = new FileInputStream(&quot;
           ...
 
           <div class="post-more-link text-center">
@@ -962,7 +978,7 @@ FileInput
 FileReader类的read()方法可以按照字符大小读取
 
 
-FileReader 
+FileReader fr = new FileReader(&quot;aaa.txt&quot;)
           ...
 
           <div class="post-more-link text-center">
@@ -1070,7 +1086,14 @@ Java用于操作流的类都在IO包中
 流按流向分为两种：输入流，输出流。
 流按操作类型分为两种：
 字节流 : 字节流可以操作任何数据,因为在计算机中任何数据都是以字节的形式存储的
-字符流 : 字符流只能操作纯字符
+字符流 : 字符流只能操作纯字符数据，比较方便。
+
+
+
+
+2.IO流常用父类
+字节流的抽象父类：
+InputSt
           ...
 
           <div class="post-more-link text-center">
@@ -1189,6 +1212,13 @@ RuntimeException
 
 
 
+
+
+
+
+###19.02_异常(JVM默认是如何处理异常的)
+
+A:JVM默认
           ...
 
           <div class="post-more-link text-center">
@@ -1301,7 +1331,7 @@ A:Map接口概述
 B:Map接口和Collection接口的不同
 Map是双列的,Collection是单列的
 Map的键唯一,Collection的子体系Set是唯一的
-Map集
+Map集合的数据结构值针对键有效，跟值无关;Collection集合的数据结构是针对元素
           ...
 
           <div class="post-more-link text-center">
